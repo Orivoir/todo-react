@@ -20,7 +20,8 @@ function DetailTodo({todo,onClose,onChangeTodo}) {
 
     const 
         [read , setRead] = useState( true ),
-        [textareaVal , setTextareaVal] = useState( todo.text )
+        [textareaVal , setTextareaVal] = useState( todo.text ) ,
+        [errorChangeTodo,setErrorChangeTodo] = useState( null )
     ;
 
     return (
@@ -43,33 +44,34 @@ function DetailTodo({todo,onClose,onChangeTodo}) {
                         <textarea ref={textareaRef} value={textareaVal} onChange={e => {
                             setTextareaVal( e.target.value );
                         }} />
-                        {/*
-                            {
-                                errorChangeTodo &&
-                                <span className="error error-field">
-                                    {errorChangeTodo}
-                                </span>
-                            }
-                        */}
+                        
+                        {
+                            errorChangeTodo &&
+                            <span className="error error-field">
+                                {errorChangeTodo}
+                            </span>
+                        }
+                    
                     </div>
                     <div>
                         <button
                             type="submit"
                             onClick={e => {
                                 e.preventDefault();
-                           
-                                setRead(true);
 
                                 // save change todo
                                 const val = textareaRef.current.value
                                 
                                 // check length val
-                                // if:
-                                todo.change = val;
-                                onChangeTodo(e ,  todo );
-                                onClose();
-                                // else: 
-                                    // setErrorChangeTodo( "fix val error" );
+                                if( val.trim().length >= 2 ) {
+
+                                    setRead(true);
+                                    todo.change = val;
+                                    onChangeTodo(e ,  todo );
+                                    onClose();
+                                }
+                                else
+                                   setErrorChangeTodo( "taille todo invalide" );
                             }}
                         >
                             modifier
