@@ -18,6 +18,20 @@ export default class App extends React.Component {
 
     super( props ) ;
 
+    const
+      avatar = sessionStorage.getItem('avatar') ,
+      pseudo = sessionStorage.getItem('pseudo') ,
+      logged = sessionStorage.getItem('logged')
+    ;
+
+    if( avatar && pseudo && logged ) {
+        this.state.user = {
+            logged: true ,
+            avatar: avatar,
+            pseudo: pseudo
+        } ;
+    }
+
     this.onChangeUser = this.onChangeUser.bind( this );
     this.onReset = this.onReset.bind( this );
   }
@@ -36,7 +50,7 @@ export default class App extends React.Component {
         avatar: null ,
         pseudo: null
       }
-    } )
+    } ) ;
   }
 
   /**
@@ -59,7 +73,12 @@ export default class App extends React.Component {
         avatar: user.avatar ,
         logged: true
       }
-    } )
+    } ) ;
+    
+    sessionStorage.setItem( 'logged' , true ) ;
+    sessionStorage.setItem( 'avatar' , user.avatar ) ;
+    sessionStorage.setItem( 'pseudo' , user.pseudo ) ;
+
   }
 
   render() {

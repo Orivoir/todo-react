@@ -1,5 +1,7 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
+import User from './User';
+import './Todo.css';
 
 export default class Todo extends React.Component {
 
@@ -14,11 +16,13 @@ export default class Todo extends React.Component {
                         ( (!pseudo || !avatar)  ) &&
                         onReset()
                     }
-
                     <section className="todo">
-                        {/* data user  
-                            <User {...this.props} />
-                        */}
+
+                        {/* data user */}
+                        <User onReset={onReset} {...this.props} />
+
+                        <section className="wrap-todo">
+                        </section>
 
                     </section>
 

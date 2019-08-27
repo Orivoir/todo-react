@@ -1,0 +1,40 @@
+.user {
+
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.user figure {
+
+    margin: 0;
+}
+
+.user .pseudo {
+
+    letter-spacing: .18rem;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 850px) , (max-height: 450px) {
+
+    .user {
+
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .user .pseudo {
+
+        font-size: 1.3rem;
+        letter-spacing: 0;
+    }
+
+    .user figure img {
+
+        width: 11vh;
+        height: auto;
+    }
+}
