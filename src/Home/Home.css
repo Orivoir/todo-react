@@ -1,0 +1,142 @@
+.home {
+
+    height: 100%;
+}
+
+.home form {
+
+    border-radius: 25px;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 6vh;
+    background-color: rgba( 0,0,0,.85 );
+    color: #fff;
+}
+
+.home input {
+
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    display: block;
+    width: 85%;
+    min-width: 250px;
+    padding-bottom: 2.5vh;
+    font-size: 1.5rem; 
+}
+
+.home figure {
+    margin: 0;
+    position: relative;
+    width: 32%;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.home figure img {
+
+    width: 100%;
+    height: auto;
+}
+
+.home form div {
+
+    margin: 5vh 0;
+}
+
+
+.home figure:hover figcaption {
+
+    opacity: 1;
+}
+
+.home figure figcaption {
+
+    font-size: .9rem;
+    padding: 1.5vh 0;
+    cursor: pointer;
+    transition: .3s linear;
+    position: absolute;
+    left: 5%;
+    background: rgba( 255,255,255,.85 );
+    color: #000;
+    top: 50%;
+    text-align: center;
+    width: 85%;
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.home form button.next {
+
+    display: block;
+    width: 50%;
+    min-width: 130px;
+    margin: auto;
+    padding: 3vh 0;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    transition: .2s linear width;
+}
+
+.home form div:nth-child( 2 ) {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home form button.focus-avatar {
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.home form button.next:hover {
+
+    width: 90%;
+}
+
+@media screen and (max-width: 580px) , (max-height: 475px) {
+
+    .home form {
+
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width: 350px) , (max-height: 450px) {
+
+    .home input {
+
+        font-size: .85rem;
+        border-width: 1px;
+    }
+
+    
+    .home form button.next {
+
+        padding: 1vh 0;
+        width: 0%;
+        font-weight: normal;
+    }
+
+    .home figure figcaption {
+        display: none;
+    }
+}

@@ -1,26 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route , Switch} from 'react-router-dom';
+import Home from './Home/Home';
+import Todo from './Todo/Todo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends React.Component {
+  
+  state = {
 
-export default App;
+    user: {
+      pseudo: null ,
+      avatar: null ,
+      logged: false
+    }
+  } ;
+
+  constructor( props ) {
+
+    super( props ) ;
+
+    this.onChangeUser = this.onChangeUser.bind( this );
+  }
+
+  /**
+   * 
+   * @param {SyntheticEvent} e 
+   * @param {Object} user 
+   */
+  onChangeUser(e, user) {
+
+    e.preventDefault() ;
+
+    if( !(typeof user.pseudo === "string" && typeof user.avatar === "string") ) {
+      console.warn("debug onChangeUser : user typeof attribute is invalid");
+      return ;
+    }
+
+    this.setState( {
+      user: {
+        pseudo: user.pseudo ,
+        avatar: user.avatar ,
+        logged: true
+      }
+    } )
+  }
+
+  render() {
+
+    return (
+      <>
+        <Switch>
+          <Route exact path="/" render={() => <Home onNext={this.onChangeUser} />} />
+          <Route path="/todo" render={() => <Todo {...this.state.user} />} />
+        </Switch>
+      </>
+    
+    ) ;
+  }
+
+} ;

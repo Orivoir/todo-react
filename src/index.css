@@ -7,7 +7,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html , body , #root {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.hidden {
+
+  display: none!important;
+}
+
+img , a , button {
+
+  display: inline-block;
+}
+
+.error {
+
+  background: rgb( 186 , 60 , 42 );
+  padding: 1vh 1.5vh;
+  border-radius: 9px;
+  margin: 1vh 0;
+  font-weight: 600;
+  color: #fff;
+  display: inline-block;
 }
