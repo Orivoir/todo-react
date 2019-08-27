@@ -19,6 +19,24 @@ export default class App extends React.Component {
     super( props ) ;
 
     this.onChangeUser = this.onChangeUser.bind( this );
+    this.onReset = this.onReset.bind( this );
+  }
+
+  /**
+   * 
+   * @param {SyntheticEvent} e 
+   */
+  onReset( e ) {
+
+    e.preventDefault();
+
+    this.setState( {
+      user: {
+        logged: false ,
+        avatar: null ,
+        pseudo: null
+      }
+    } )
   }
 
   /**
@@ -29,7 +47,7 @@ export default class App extends React.Component {
   onChangeUser(e, user) {
 
     e.preventDefault() ;
-
+    
     if( !(typeof user.pseudo === "string" && typeof user.avatar === "string") ) {
       console.warn("debug onChangeUser : user typeof attribute is invalid");
       return ;
@@ -49,8 +67,7 @@ export default class App extends React.Component {
     return (
       <>
         <Switch>
-          <Route exact path="/" render={() => <Home onNext={this.onChangeUser} />} />
-          <Route path="/todo" render={() => <Todo {...this.state.user} />} />
+          <Route exact path="/" render={() => ( !this.state.user.logged ? <Home onNext={this.onChangeUser} /> : <Todo {...this.state.user} onReset={this.onReset} /> ) } />
         </Switch>
       </>
     
