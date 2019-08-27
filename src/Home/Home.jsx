@@ -8,7 +8,7 @@ export default class Home extends React.Component {
 
     state = {
 
-        tempAvatar: null ,
+        tempAvatar: sessionStorage.getItem('avatar') || null ,
         errors: {
             avatar: null ,
             pseudo: null
@@ -103,12 +103,17 @@ export default class Home extends React.Component {
                         <Redirect to="/todo" />
                     }
                     <section className="home">
-
+                   
                         <form method="post">
+
+                            <h2>
+                                Todo identité <span role="img" aria-label="smiley sunglass">😎</span>
+                            </h2>
+
 
                             <div>
                                 <label className="hidden" htmlFor="pseudo">pseudo</label>
-                                <input type="text" id="pseudo" ref={this.inputPseudoRef} placeholder="Votre pseudo" name="pseudo" />
+                                <input autoComplete="off" spellCheck="off" type="text" id="pseudo" ref={this.inputPseudoRef} placeholder={ sessionStorage.getItem('pseudo') || "Votre pseudo"} name="pseudo" />
                                 {
                                     errors.pseudo &&
                                     <p className="error error-field"> { errors.pseudo } </p>
@@ -121,7 +126,7 @@ export default class Home extends React.Component {
                                     <button type="button" className="focus-avatar">
                                         
                                         <img
-                                            src={(tempAvatar || avatarImg)}
+                                                src={(tempAvatar || avatarImg)}
                                             alt="your avatar"
                                             // default size (px)
                                             width="75"

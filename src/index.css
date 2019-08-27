@@ -51,6 +51,15 @@ input {
   font-size: 1.5rem; 
 }
 
+button {
+
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  padding: .5vh 3vh;
+}
+
 /*
 * ul only semantical tag
 */

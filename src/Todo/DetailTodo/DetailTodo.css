@@ -27,6 +27,11 @@
 }
 
 
+.detail-todo form button {
+
+    border-color: #000;
+}
+
 .detail-todo form {
 
     padding: 2vh 0;
@@ -34,9 +39,11 @@
 
 .detail-todo textarea {
     width: 100%;
+    min-height: 160px;
     display: block;
     margin-bottom: 2vh;
     font-size: 1.45rem;
+    resize: none;
 }
 
 .detail-todo .wrap-todo-detail {
@@ -59,4 +66,19 @@
 .detail-todo .rewrite-todo:hover {
     
     transform: scale(1.15);
+}
+
+
+@media screen and (max-width: 450px) , (max-height: 435px) {
+    
+    .detail-todo textarea {
+
+        font-size: .72rem;
+    }
+    
+    .detail-todo .wrap-todo-detail {
+
+        width: 90%;
+        margin-top: 2.5vh;
+    }
 }

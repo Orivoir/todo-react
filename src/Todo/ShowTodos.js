@@ -38,7 +38,6 @@ function ShowTodos({list,onRemoveTodo,onChangeTodo}){
                                 }
                             </p>
                             <ul className="list-set-todo">
-                                
                                 <li
                                     className="item-set-todo"
                                     onClick={() => {
