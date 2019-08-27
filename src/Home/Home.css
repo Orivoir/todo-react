@@ -18,15 +18,8 @@
 
 .home input {
 
-    background-color: transparent;
-    border: none;
     color: #fff;
-    border-bottom: 2px solid #fff;
-    display: block;
-    width: 85%;
-    min-width: 250px;
-    padding-bottom: 2.5vh;
-    font-size: 1.5rem; 
+    border-color: #fff; 
 }
 
 .home figure {
@@ -119,15 +112,7 @@
     }
 }
 
-
 @media screen and (max-width: 350px) , (max-height: 450px) {
-
-    .home input {
-
-        font-size: .85rem;
-        border-width: 1px;
-    }
-
     
     .home form button.next {
 

@@ -1,0 +1,26 @@
+.form-todo form {
+
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.form-todo form div input {
+    color: #000;
+    border-color: #000;
+}
+
+.form-todo form div:nth-child(1) {
+
+    margin-left: 0;
+}
+
+.form-todo form div:last-child {
+
+    margin-right: 0;
+}
+
+.form-todo form div {
+
+    margin: 0 3.5vh;
+}

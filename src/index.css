@@ -38,3 +38,24 @@ img , a , button {
   color: #fff;
   display: inline-block;
 }
+
+input {
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  display: block;
+  width: 85%;
+  min-width: 250px;
+  padding-bottom: 2.5vh;
+  font-size: 1.5rem; 
+}
+
+
+@media screen and (max-width: 350px) , (max-height: 450px) {
+
+  input {
+    font-size: .85rem;
+    border-width: 1px;
+  }
+}

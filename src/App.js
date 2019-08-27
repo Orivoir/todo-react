@@ -78,7 +78,6 @@ export default class App extends React.Component {
     sessionStorage.setItem( 'logged' , true ) ;
     sessionStorage.setItem( 'avatar' , user.avatar ) ;
     sessionStorage.setItem( 'pseudo' , user.pseudo ) ;
-
   }
 
   render() {
