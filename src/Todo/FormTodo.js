@@ -25,7 +25,11 @@ function FormTodo({onAddTodo}) {
                     <button
                         type="submit"
                         onClick={e => {
-                            onAddTodo( e , inputTodoRef.current.value );
+                            const val = inputTodoRef.current.value;
+
+                            inputTodoRef.current.value = '';
+                            inputTodoRef.current.focus() ;
+                            onAddTodo( e , val );
                         } }
                     >
                         valider

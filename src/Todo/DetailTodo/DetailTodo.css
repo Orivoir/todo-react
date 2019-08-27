@@ -1,0 +1,62 @@
+.detail-todo {
+
+    position: fixed;
+    
+    /* size fullscreen */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background: rgba( 0,0,0,.88 );
+}
+
+.detail-todo .close-detail-todo {
+
+    cursor: pointer;
+    color: #fff;
+    padding: 1.5vh;
+    transition: .3s linear all;
+}
+
+
+.detail-todo .close-detail-todo:hover {
+
+    transform: scale(1.2);
+    color: rgb(186 , 62 , 42);
+}
+
+
+.detail-todo form {
+
+    padding: 2vh 0;
+}
+
+.detail-todo textarea {
+    width: 100%;
+    display: block;
+    margin-bottom: 2vh;
+    font-size: 1.45rem;
+}
+
+.detail-todo .wrap-todo-detail {
+
+    background: #fff;
+    padding: .3vh 3vh;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.detail-todo .rewrite-todo {
+
+    cursor: pointer;
+    padding: .8vh 1vh;
+    cursor: pointer;
+    transition: .18s linear all; 
+}
+
+
+.detail-todo .rewrite-todo:hover {
+    
+    transform: scale(1.15);
+}

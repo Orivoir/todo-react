@@ -2,6 +2,7 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import User from './User';
 import FormTodo from './FormTodo';
+import ShowTodos from './ShowTodos';
 import './Todo.css';
 
 export default class Todo extends React.Component {
@@ -20,7 +21,6 @@ export default class Todo extends React.Component {
         if( !isNaN( countTodos ) ) {
 
             // Get all todos save in sessionStorage
-
             let currentTodo = null;
 
             // Generate sequential number array [0,1,2,...]
@@ -40,6 +40,49 @@ export default class Todo extends React.Component {
         }
 
         this.onSaveTodo = this.onSaveTodo.bind( this ); 
+        this.onRemoveTodo = this.onRemoveTodo.bind( this ); 
+    }
+
+    /**
+     * @bindMethod [constructor]
+     * @param {SyntheticEvent} e 
+     * @param {Object} todo 
+     */
+    onRemoveTodo( e , todo ) {
+
+
+        e.preventDefault();
+
+        if( typeof todo !== 'object' ) {
+            console.warn("debug onRemoveTodo , arg2 bust me Object bust is " , typeof todo );
+            return ;
+        }
+
+        const newTodos = this.state.todos.filter( item => (
+            (  todo.id !== JSON.parse( item ).id )
+        ) ) ;
+
+        this.setState( {
+            todos: newTodos
+        } );
+    }
+
+    /**
+     * @description synchronous state<->sessionStorage before any render
+     */
+    reOrderSession() {
+
+        sessionStorage.setItem( 'countTodo' , this.state.todos.length );
+
+        Array.from( Array( (this.state.todos.length+1) ).keys() ).map( key => {
+         
+            if( this.state.todos[key] )
+                sessionStorage.setItem( `todo-${key}` , this.state.todos[key] )
+            else
+                sessionStorage.removeItem( `todo-${key}`);
+
+            return key;
+         } ) ;
     }
 
     /**
@@ -56,14 +99,21 @@ export default class Todo extends React.Component {
             return ;
         }
 
-        const countTodos = this.state.todos.length;
+        const
+            countTodos = this.state.todos.length ,
+            saveTodo = JSON.stringify({
+                text:todo,
+                id: (Math.random() * Date.now()).toString()
+            })
+        ;
         
         // Push new todo in sessionStorage
-        sessionStorage.setItem( `todo-${countTodos}` , todo );
+        sessionStorage.setItem( `todo-${countTodos}` , saveTodo 
+        );
 
         // Push new todo in local state
         this.setState( state =>( {
-            todos: [ ...state.todos , todo ]
+            todos: [ ...state.todos , saveTodo ]
         }) ) ;
 
         // Push new count todos        
@@ -72,7 +122,12 @@ export default class Todo extends React.Component {
 
     render() {
 
-        const {pseudo, avatar,onReset} = this.props;
+        const
+            {pseudo, avatar,onReset} = this.props ,
+            {todos} = this.state
+        ;
+
+        this.reOrderSession() ;
 
         return (
             <DocumentTitle title="todo | dashboard">
@@ -90,6 +145,13 @@ export default class Todo extends React.Component {
 
                             {/* form write && add new todo */}
                             <FormTodo onAddTodo={this.onSaveTodo} />
+
+                            {/* show all todos */}
+                            <ShowTodos 
+                                list={todos}
+                                onRemoveTodo={this.onRemoveTodo}
+                                // onChangeTodo={}
+                            />
 
                         </section>
 

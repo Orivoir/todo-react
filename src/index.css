@@ -51,6 +51,15 @@ input {
   font-size: 1.5rem; 
 }
 
+/*
+* ul only semantical tag
+*/
+ul {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 @media screen and (max-width: 350px) , (max-height: 450px) {
 
