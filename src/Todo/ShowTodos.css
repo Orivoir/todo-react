@@ -12,7 +12,8 @@
     min-width: 210px;
     margin: 3vh;
     text-align: center;
-    background: red;
+    background: rgba( 0,0,0,.06 );
+    border-radius: 8px;
     padding: 2vh 0;
 }
 
@@ -22,10 +23,26 @@
     justify-content: center;
 }
 
+.icon-remove , .icon-see {
+
+    transition: .18s linear all;
+}
+
+
+.show-todos ul.list-set-todo li.item-set-todo:hover .icon-see , 
+.show-todos ul.list-set-todo li.item-set-todo:hover .icon-remove
+{
+
+    transform: scale( 1.3 );
+    color: rgb( 0,0,0 );
+}
+
 .show-todos ul.list-set-todo li.item-set-todo {
 
     padding: .5vh 2vh;
-    background: blue;
+    background: rgba( 0,0,0,.12 );
+    border-radius: 8px;
+    color: rgb(35,35,35);
     margin: 0 2vh;
     cursor: pointer;
 }
