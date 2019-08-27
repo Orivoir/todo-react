@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 library.add( fas ) ;
 
-function ShowTodos({list,onRemoveTodo}){
+function ShowTodos({list,onRemoveTodo,onChangeTodo}){
 
     const [detailTodo , setDetailTodo] = useState(null) ;
 
@@ -45,7 +45,7 @@ function ShowTodos({list,onRemoveTodo}){
                                             setDetailTodo(
                                                 <DetailTodo
                                                     onClose={() => setDetailTodo( null )} todo={JSON.parse(item)}
-                                                    // onChangeTodo={}
+                                                    onChangeTodo={onChangeTodo}
                                                 />
                                             );
                                         }

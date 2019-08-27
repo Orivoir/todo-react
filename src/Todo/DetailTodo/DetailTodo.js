@@ -16,9 +16,12 @@ library.add( fas ) ;
 
 const textareaRef = React.createRef();
 
-function DetailTodo({todo,onClose}) {
+function DetailTodo({todo,onClose,onChangeTodo}) {
 
-    const [read , setRead] = useState( true );
+    const 
+        [read , setRead] = useState( true ),
+        [textareaVal , setTextareaVal] = useState( todo.text )
+    ;
 
     return (
         <section className="detail-todo">
@@ -37,8 +40,8 @@ function DetailTodo({todo,onClose}) {
             >
                 <form method="post">
                     <div>
-                        <textarea ref={textareaRef} value={todo.text} onChange={e => {
-                            textareaRef.current.value = e.target.value ; 
+                        <textarea ref={textareaRef} value={textareaVal} onChange={e => {
+                            setTextareaVal( e.target.value );
                         }} />
                         {/*
                             {
@@ -58,12 +61,13 @@ function DetailTodo({todo,onClose}) {
                                 setRead(true);
 
                                 // save change todo
+                                const val = textareaRef.current.value
                                 
-                                // props :onChangeTodo
-                                //const val = textareaRef.current.value
                                 // check length val
                                 // if:
-                                    // onChangeTodo( val );
+                                todo.change = val;
+                                onChangeTodo(e ,  todo );
+                                onClose();
                                 // else: 
                                     // setErrorChangeTodo( "fix val error" );
                             }}

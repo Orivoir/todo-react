@@ -41,6 +41,47 @@ export default class Todo extends React.Component {
 
         this.onSaveTodo = this.onSaveTodo.bind( this ); 
         this.onRemoveTodo = this.onRemoveTodo.bind( this ); 
+        this.onChangeTodo = this.onChangeTodo.bind( this ); 
+    }
+
+    
+    /**
+     * @bindMethod [constructor]
+     * @param {SyntheticEvent} e 
+     * @param {Object} todo 
+     */
+    onChangeTodo( e , todo ) {
+        
+        e.preventDefault();
+
+        if( typeof todo !== 'object' ) {
+            console.warn("debug onChangeTodo , arg2 bust me Object bust is " , typeof todo );
+            return ;
+        }
+        
+        try {
+
+            const extractTodo = JSON.parse(this.state.todos.filter( item => (
+                todo.id === JSON.parse( item ).id
+            ) )[0]);
+
+            
+            extractTodo.text = todo.change ;
+
+            const newTodos = this.state.todos.map( item => {
+
+                console.log( todo.id === JSON.parse(item).id );
+                return ( todo.id === JSON.parse(item).id ) ? JSON.stringify(extractTodo) : item
+
+            } ) ;
+
+            // PUSH Update todos
+            this.setState( {
+                todos: newTodos
+            } ) ;
+                
+        } catch( SyntaxError ) { /** Silence is <feature /> */ }
+
     }
 
     /**
@@ -150,7 +191,7 @@ export default class Todo extends React.Component {
                             <ShowTodos 
                                 list={todos}
                                 onRemoveTodo={this.onRemoveTodo}
-                                // onChangeTodo={}
+                                onChangeTodo={this.onChangeTodo}
                             />
 
                         </section>
